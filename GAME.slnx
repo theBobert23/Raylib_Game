@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="GAME/GAME.vcxproj" Id="b7ad26e3-fef2-4a79-99a8-bb849fd90e49" />
+</Solution>
