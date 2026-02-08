@@ -1,8 +1,20 @@
-#include "raylib.h"
+#include "core/game.hpp"
+#include "projects/paddle/paddleGame.hpp"
+
+
 
 int main()
 {
-    InitWindow(850,450, "MyGame");
+
+    Game* game = new paddleGame();
+
+    int WIDTH = game->GetWindowWidth();
+    int HEIGHT = game->GetWindowHeight();
+
+    game->Init();
+
+    
+    InitWindow(WIDTH,HEIGHT, "MyGame");
     SetTargetFPS(60);
 
     while (!WindowShouldClose())

@@ -163,10 +163,12 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\src\projects\paddle\paddle.cpp" />
+    <ClCompile Include="..\src\projects\paddle\paddleGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\core\game.hpp" />
     <ClInclude Include="..\src\projects\paddle\paddle.hpp" />
+    <ClInclude Include="..\src\projects\paddle\paddleGame.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
