@@ -9,6 +9,7 @@ private:
 
 protected:
 	void SetWindowSize(int width, int height);
+	Size GetWindowSize() const;
 
 public:
 	virtual ~Game() = 0;

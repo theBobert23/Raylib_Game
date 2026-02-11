@@ -10,7 +10,6 @@ Paddle::Paddle(Size window, ObjectSide side, Type type) {
 	size.width = PADDLE_WIDTH;
 	size.height = PADDLE_HEIGHT;
 
-	float TIME = 2.5f;
 	speed = (WINDOW.height - size.height) / TIME;
 
 

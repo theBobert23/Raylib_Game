@@ -6,7 +6,7 @@
 
 
 namespace {
-	constexpr int WINDOW_WIDTH = 900;
+	constexpr int WINDOW_WIDTH = 1200;
 	constexpr int  WINDOW_HEIGHT = 600;
 }
 

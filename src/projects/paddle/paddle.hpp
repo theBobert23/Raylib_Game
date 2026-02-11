@@ -8,6 +8,8 @@ namespace {
 	constexpr int PADDING = 20;
 	constexpr int PADDLE_WIDTH = 10;
 	constexpr int PADDLE_HEIGHT = 80;
+	//Time for a paddle to go from top to bottom 
+	constexpr float TIME = 2.0f; 
 }
 
 
