@@ -2,11 +2,13 @@
 
 #include "../../core/game.hpp"
 #include "paddle.hpp"
+#include "../../utils.hpp"
 
 class paddleGame : public Game {
 private:
-	int PADDLE_WINDOW_WIDTH;
-	int PADDLE_WINDOW_HEIGHT;
+	Size WINDOW;
+	Paddle* Player;
+	Paddle* Enemy;
 	
 public:
 	~paddleGame() override;
@@ -14,7 +16,7 @@ public:
 	paddleGame();
 	void Init() override;
 	void Draw() override;
-	void Update() override;
+	void Update(float dt) override;
 	void CheckInput() override;
 	bool ShouldClose() override;
 	

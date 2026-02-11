@@ -1,27 +1,42 @@
 #include "core/game.hpp"
 #include "projects/paddle/paddleGame.hpp"
 
+#include <memory>
 
 
 int main()
 {
 
-    Game* game = new paddleGame();
+    std::unique_ptr<Game> game = std::make_unique<paddleGame>();
 
     int WIDTH = game->GetWindowWidth();
     int HEIGHT = game->GetWindowHeight();
 
+    InitWindow(WIDTH,HEIGHT, "MyGame");
+    
     game->Init();
 
-    
-    InitWindow(WIDTH,HEIGHT, "MyGame");
     SetTargetFPS(60);
 
+    //ENTER MENU
     while (!WindowShouldClose())
     {
+
         BeginDrawing();
         ClearBackground(RAYWHITE);
-        DrawText("Hello Raylib!", 350, 200, 20, DARKGRAY);
+
+        //Run each game untill closing then enter menu
+        //while ( ! (game->ShouldClose())) 
+            
+            float dt = GetFrameTime();
+        
+            game->CheckInput();
+            game->Update(dt);
+            game->Draw();
+
+        
+
+
         EndDrawing();
     }
 

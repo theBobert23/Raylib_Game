@@ -38,5 +38,8 @@
     <ClInclude Include="..\src\projects\paddle\paddleGame.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\utils.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

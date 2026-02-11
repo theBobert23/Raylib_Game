@@ -1,6 +1,8 @@
 #include "game.hpp"
 
+Game::~Game() {
 
+}
 
 void Game::SetWindowSize(int width, int height) {
 
@@ -25,3 +27,4 @@ int Game::GetWindowWidth() const {
 int  Game::GetWindowHeight() const {
 	return WINDOW_HEIGHT;
 }
+

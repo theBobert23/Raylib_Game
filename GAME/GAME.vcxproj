@@ -169,6 +169,7 @@
     <ClInclude Include="..\src\core\game.hpp" />
     <ClInclude Include="..\src\projects\paddle\paddle.hpp" />
     <ClInclude Include="..\src\projects\paddle\paddleGame.hpp" />
+    <ClInclude Include="..\src\utils.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
