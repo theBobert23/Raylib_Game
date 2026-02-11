@@ -7,8 +7,8 @@ Paddle::Paddle(Size window, ObjectSide side, Type type) {
 	SIDE = side;
 	TYPE = type;
 
-	size.width = 10;
-	size.height = 80;
+	size.width = PADDLE_WIDTH;
+	size.height = PADDLE_HEIGHT;
 
 	float TIME = 2.5f;
 	speed = (WINDOW.height - size.height) / TIME;
@@ -16,10 +16,10 @@ Paddle::Paddle(Size window, ObjectSide side, Type type) {
 
 	switch(side){
 		case ObjectSide::Left : 
-			pos.x = 20;
+			pos.x = PADDING;
 			break;
 		case ObjectSide::Right :
-			pos.x = WINDOW.width - size.width - 20;
+			pos.x = WINDOW.width - size.width - PADDING;
 			break;
 
 	}

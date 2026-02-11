@@ -1,11 +1,11 @@
 #pragma once
 
 #include "raylib.h"
+#include "../utils.hpp"
 
 class Game {
 private:
-	int WINDOW_WIDTH;
-	int WINDOW_HEIGHT;
+	Size WINDOW;
 
 protected:
 	void SetWindowSize(int width, int height);

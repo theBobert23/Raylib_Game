@@ -4,9 +4,15 @@
 #include "paddle.hpp"
 #include "../../utils.hpp"
 
+
+namespace {
+	constexpr int WINDOW_WIDTH = 900;
+	constexpr int  WINDOW_HEIGHT = 600;
+}
+
+
 class paddleGame : public Game {
 private:
-	Size WINDOW;
 	Paddle* Player;
 	Paddle* Enemy;
 	

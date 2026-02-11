@@ -7,14 +7,11 @@ paddleGame :: ~paddleGame() {
 }
 
 paddleGame :: paddleGame() {
-	
-	WINDOW.width = 900;
-	WINDOW.height = 600;
 
-	SetWindowSize(WINDOW.width, WINDOW.height);
+	SetWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 
-	Player = new Paddle(WINDOW, ObjectSide::Left, Type::Player);
-	Enemy = new Paddle(WINDOW, ObjectSide::Right, Type::Player);
+	Player = new Paddle(GetWindowSize(), ObjectSide::Left, Type::Player);
+	Enemy = new Paddle(GetWindowSize(), ObjectSide::Right, Type::Player);
 }
 
 void paddleGame :: Init() {

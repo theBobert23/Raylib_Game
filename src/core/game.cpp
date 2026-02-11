@@ -8,23 +8,28 @@ void Game::SetWindowSize(int width, int height) {
 
 	//check if values are good.
 
-	WINDOW_WIDTH = width;
+	WINDOW.width = width;
 
-	WINDOW_HEIGHT = height;
+	WINDOW.height = height;
+}
+
+Size Game::GetWindowSize() const{
+	return WINDOW;
 }
 
 
 Game::Game() {
-	WINDOW_WIDTH = 900;
-	WINDOW_HEIGHT = 450;
+	WINDOW.width = 900;
+	WINDOW.height = 450;
+
 }
 
 int Game::GetWindowWidth() const {
-	return WINDOW_WIDTH;
+	return WINDOW.width;
 }
 
 
 int  Game::GetWindowHeight() const {
-	return WINDOW_HEIGHT;
+	return WINDOW.height;
 }
 

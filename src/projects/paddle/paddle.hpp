@@ -3,6 +3,15 @@
 #include "raylib.h"
 #include "../../utils.hpp"
 
+
+namespace {
+	constexpr int PADDING = 20;
+	constexpr int PADDLE_WIDTH = 10;
+	constexpr int PADDLE_HEIGHT = 80;
+}
+
+
+
 class Paddle {
 private:
 	ObjectSide SIDE;
