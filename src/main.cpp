@@ -1,11 +1,15 @@
 #include "core/game.hpp"
 #include "projects/paddle/paddleGame.hpp"
 
+//FOR: unique_ptr;  time();  
 #include <memory>
+#include <ctime>
 
 
 int main()
 {
+    //FOR GetRandomValue();
+    SetRandomSeed(time(nullptr));
 
     std::unique_ptr<Game> game = std::make_unique<paddleGame>();
 

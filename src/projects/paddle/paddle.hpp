@@ -33,5 +33,6 @@ public:
 	void Draw();
 	void Update(float dt);
 	void CheckInput();
-
+	Vector2 GetPos();
+	Vector2 GetSize();
 };

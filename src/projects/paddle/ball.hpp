@@ -3,7 +3,7 @@
 #include "raylib.h"
 
 namespace {
-	constexpr int RADIUS = 5;
+	constexpr int RADIUS = 10;
 }
 
 class Ball {
@@ -17,6 +17,10 @@ private:
 public:
 	Ball(Vector2 position);
 	void Draw();
-	void Update();
+	void Update(float dt);
 	Vector2 GetPosition() const;
+	void SetSpeed(Vector2 newSpeed);
+	void Invert_X_Direction();
+	void Invert_Y_Direction();
+	int GetRadius();
 };

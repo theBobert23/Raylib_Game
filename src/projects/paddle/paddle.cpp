@@ -83,7 +83,13 @@ void Paddle :: Update(float dt) {
 
 void Paddle :: CheckInput() {
 
-	
+}
 
+Vector2 Paddle :: GetPos() {
+	return pos;
+}
+
+Vector2 Paddle :: GetSize() {
+	return { PADDLE_WIDTH, PADDLE_HEIGHT };
 }
 

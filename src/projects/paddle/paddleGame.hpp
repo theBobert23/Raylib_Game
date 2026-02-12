@@ -2,6 +2,7 @@
 
 #include "../../core/game.hpp"
 #include "paddle.hpp"
+#include "ball.hpp"
 #include "../../utils.hpp"
 
 
@@ -14,7 +15,8 @@ namespace {
 class paddleGame : public Game {
 private:
 	Paddle* Player;
-	Paddle* Enemy;
+	Paddle* Player2;
+	Ball* ball;
 	
 public:
 	~paddleGame() override;
@@ -25,5 +27,7 @@ public:
 	void Update(float dt) override;
 	void CheckInput() override;
 	bool ShouldClose() override;
+
+	void UpdateBall(float dt);
 	
 };

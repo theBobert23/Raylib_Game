@@ -162,11 +162,13 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\src\projects\paddle\ball.cpp" />
     <ClCompile Include="..\src\projects\paddle\paddle.cpp" />
     <ClCompile Include="..\src\projects\paddle\paddleGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\core\game.hpp" />
+    <ClInclude Include="..\src\projects\paddle\ball.hpp" />
     <ClInclude Include="..\src\projects\paddle\paddle.hpp" />
     <ClInclude Include="..\src\projects\paddle\paddleGame.hpp" />
     <ClInclude Include="..\src\utils.hpp" />
