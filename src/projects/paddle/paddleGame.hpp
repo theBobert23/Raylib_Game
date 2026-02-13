@@ -9,6 +9,7 @@
 namespace {
 	constexpr int WINDOW_WIDTH = 1200;
 	constexpr int  WINDOW_HEIGHT = 600;
+	constexpr Vector2 BALL_START_POS =  { (float)WINDOW_WIDTH / 2.0f, (float)WINDOW_HEIGHT / 2.0f} ;
 }
 
 
@@ -17,6 +18,7 @@ private:
 	Paddle* Player;
 	Paddle* Player2;
 	Ball* ball;
+	
 	
 public:
 	~paddleGame() override;
@@ -29,5 +31,5 @@ public:
 	bool ShouldClose() override;
 
 	void UpdateBall(float dt);
-	
+	void ResetBall();
 };

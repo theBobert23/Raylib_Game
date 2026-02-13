@@ -2,7 +2,7 @@
 #include <iostream>
 
 Ball::Ball(Vector2 position) {
-	int MIN = 100, MAX = 150;
+	int MIN = 250, MAX = 300;
 
 	pos = position;
 
@@ -12,7 +12,6 @@ Ball::Ball(Vector2 position) {
 	direction.x = (GetRandomValue(0, 1) * 2) - 1;
 	direction.y = (GetRandomValue(0, 1) * 2) - 1;
 
-	std::cout <<speed.x<<' '<<speed.y<<' '<< direction.x << ' ' << direction.y;
 }
 
 void Ball::Draw() {
@@ -30,6 +29,10 @@ Vector2 Ball::GetPosition() const{
 	return pos;
 }
 
+void Ball::SetPosition(Vector2 newPos) {
+	pos = newPos;
+}
+
 void Ball::SetSpeed(Vector2 newSpeed) {
 
 }
@@ -40,6 +43,12 @@ void Ball::Invert_X_Direction() {
 
 void Ball::Invert_Y_Direction() {
 	direction.y *= -1;
+}
+
+void Ball::RandomDirection() {
+	SetRandomSeed(time(nullptr));
+	direction.x = (GetRandomValue(0, 1) * 2) - 1;
+	direction.y = (GetRandomValue(0, 1) * 2) - 1;
 }
 
 int Ball::GetRadius() {

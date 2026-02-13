@@ -14,7 +14,7 @@ paddleGame :: paddleGame() {
 	Player = new Paddle(GetWindowSize(), ObjectSide::Left, Type::Player);
 	Player2 = new Paddle(GetWindowSize(), ObjectSide::Right, Type::Player);
  
-	ball = new Ball( { (float) WINDOW_WIDTH / 2.0f, (float) WINDOW_HEIGHT / 2.0f});
+	ball = new Ball( BALL_START_POS );
 
 }
 
@@ -52,12 +52,28 @@ void paddleGame :: UpdateBall(float dt) {
 	if (ballPos.y > WINDOW_HEIGHT - rad)
 		ball->Invert_Y_Direction();
 
+	
 	if ((ballPos.x - rad < p1Pos.x + paddleSize.x) && 
 		(ballPos.y > p1Pos.y && ballPos.y < p1Pos.y + paddleSize.y))
 		ball->Invert_X_Direction();
-	if ((ballPos.x + rad > p2Pos.x) &&
-		(ballPos.y > p1Pos.y && ballPos.y < p1Pos.y + paddleSize.y))
+	else if (ballPos.x - rad < p1Pos.x + paddleSize.x) {
+		ResetBall();
+		return;
+	} 
+
+	if ((ballPos.x + rad > p2Pos.x - paddleSize.x/2) &&
+		(ballPos.y > p2Pos.y && ballPos.y < p2Pos.y + paddleSize.y))
 		ball->Invert_X_Direction();
+	else if (ballPos.x + rad > p2Pos.x) {
+		ResetBall();
+		return;
+	}
+
+}
+
+void paddleGame :: ResetBall(){
+	ball->RandomDirection();
+	ball->SetPosition(BALL_START_POS);
 }
 
 void paddleGame :: CheckInput() {
