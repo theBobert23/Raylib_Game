@@ -156,6 +156,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\core\game.cpp" />
+    <ClCompile Include="..\src\core\menu.cpp" />
     <ClCompile Include="..\src\main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
@@ -167,7 +168,9 @@
     <ClCompile Include="..\src\projects\paddle\paddleGame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\Constans.hpp" />
     <ClInclude Include="..\src\core\game.hpp" />
+    <ClInclude Include="..\src\core\menu.hpp" />
     <ClInclude Include="..\src\projects\paddle\ball.hpp" />
     <ClInclude Include="..\src\projects\paddle\paddle.hpp" />
     <ClInclude Include="..\src\projects\paddle\paddleGame.hpp" />

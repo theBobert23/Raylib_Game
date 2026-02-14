@@ -7,9 +7,7 @@
 
 
 namespace {
-	constexpr int WINDOW_WIDTH = 1200;
-	constexpr int  WINDOW_HEIGHT = 600;
-	constexpr Vector2 BALL_START_POS =  { (float)WINDOW_WIDTH / 2.0f, (float)WINDOW_HEIGHT / 2.0f} ;
+	constexpr Vector2 BALL_START_POS = { 10, 10 };
 }
 
 

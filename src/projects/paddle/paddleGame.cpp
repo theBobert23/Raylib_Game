@@ -9,8 +9,6 @@ paddleGame :: ~paddleGame() {
 
 paddleGame :: paddleGame() {
 
-	SetWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-
 	Player = new Paddle(GetWindowSize(), ObjectSide::Left, Type::Player);
 	Player2 = new Paddle(GetWindowSize(), ObjectSide::Right, Type::Player);
  
@@ -49,7 +47,7 @@ void paddleGame :: UpdateBall(float dt) {
 
 	if (ballPos.y - rad < 1)
 		ball->Invert_Y_Direction();
-	if (ballPos.y > WINDOW_HEIGHT - rad)
+	if (ballPos.y > 720 - rad)
 		ball->Invert_Y_Direction();
 
 	
