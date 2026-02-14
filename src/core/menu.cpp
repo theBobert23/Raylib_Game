@@ -1,5 +1,5 @@
 #include "menu.hpp"
-#include "../Constants.hpp"
+#include "../constants.hpp"
 
 using namespace MenuConst;
 
@@ -17,14 +17,14 @@ void Menu::Init() {
 	//FOR GetRandomValue();
 	SetRandomSeed(time(nullptr));
 
-	//VSYNC for anti screen tearing; 
+	//VSYNC for anti screen tearing, caps FPS to monitor Hz so no need for SetTargerFPS(); 
 	SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_VSYNC_HINT);
 
 	InitWindow(MenuConst::WINDOW_WIDTH, MenuConst::WINDOW_HEIGHT, TITLE);
 	
-	RenderTexture2D target = LoadRenderTexture(MenuConst::WINDOW_WIDTH, MenuConst::WINDOW_HEIGHT);
-
-	SetTargetFPS(120);
+	RenderTexture2D target = LoadRenderTexture(MenuConst::WINDOW_WIDTH, 
+		MenuConst::WINDOW_HEIGHT);
+	
 
 	while (!WindowShouldClose()) {
 
@@ -35,13 +35,16 @@ void Menu::Init() {
 
 		float dt = GetFrameTime();
 
-		Update(dt);
+		
 
 		if (game != nullptr) {
 			game->Update(dt);
 			game->Draw();
-		}else
+		}
+		else {
+			Update(dt);
 			Draw();
+		}
 		
 		EndTextureMode();
 
@@ -50,18 +53,28 @@ void Menu::Init() {
 
 		ClearBackground(BLUE);
 
-		float scale = fminf((float) GetScreenWidth() / (float) WINDOW_WIDTH, (float) GetScreenHeight() / (float) WINDOW_HEIGHT );
+		float scale = fminf((float)GetScreenWidth() / (float)WINDOW_WIDTH,
+			(float)GetScreenHeight() / (float)WINDOW_HEIGHT);
+
+		int ScreenW = GetScreenWidth();
+		int ScreenH = GetScreenHeight();
 
 		DrawTexturePro(target.texture,
 			Rectangle{ 0.0f, 0.0f,
 			(float)target.texture.width,
 			(float)target.texture.height },
-			Rectangle{} );
+
+			Rectangle{ (ScreenW - WINDOW_WIDTH * scale) * 0.5f,
+				-(ScreenH - WINDOW_HEIGHT * scale) * 0.5f,
+				WINDOW_WIDTH * scale,
+				WINDOW_HEIGHT * scale },
+
+			Vector2{ 0, 0 }, 0.0f, WHITE);
 
 		EndDrawing();
 	}
 
-	UnloadTexture(target.texture);
+	UnloadRenderTexture(target);
 
 	CloseWindow();
 
