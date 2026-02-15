@@ -7,16 +7,16 @@ Ball::Ball(Vector2 position) {
 
 	pos = position;
 
-	speed.x = GetRandomValue(MIN, MAX);
-	speed.y = GetRandomValue(MIN, MAX);
+	speed.x = (float) GetRandomValue(MIN, MAX);
+	speed.y = (float) GetRandomValue(MIN, MAX);
 
-	direction.x = (GetRandomValue(0, 1) * 2) - 1;
-	direction.y = (GetRandomValue(0, 1) * 2) - 1;
+	direction.x = (float) (GetRandomValue(0, 1) * 2) - 1;
+	direction.y = (float) (GetRandomValue(0, 1) * 2) - 1;
 
 }
 
 void Ball::Draw() {
-	DrawCircle(pos.x, pos.y, RADIUS, BLUE);
+	DrawCircle( (int) pos.x, (int) pos.y, RADIUS, BLUE);
 }
 
 void Ball::Update(float dt) {
@@ -47,9 +47,9 @@ void Ball::Invert_Y_Direction() {
 }
 
 void Ball::RandomDirection() {
-	SetRandomSeed(time(nullptr));
-	direction.x = (GetRandomValue(0, 1) * 2) - 1;
-	direction.y = (GetRandomValue(0, 1) * 2) - 1;
+	SetRandomSeed((unsigned int) time(nullptr));
+	direction.x = (float) (GetRandomValue(0, 1) * 2) - 1;
+	direction.y = (float) (GetRandomValue(0, 1) * 2) - 1;
 }
 
 int Ball::GetRadius() {

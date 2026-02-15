@@ -17,7 +17,7 @@ Menu::Menu() {
 void Menu::Init() {
 
 	//FOR GetRandomValue();
-	SetRandomSeed(time(nullptr));
+	SetRandomSeed((unsigned int) time(nullptr));
 
 	//VSYNC for anti screen tearing, caps FPS to monitor Hz so no need for SetTargerFPS(); 
 	SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_VSYNC_HINT);

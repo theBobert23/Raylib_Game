@@ -2,6 +2,7 @@
 
 #include "raylib.h"
 #include "../../constants.hpp"
+#include "ctime"
 
 class Ball {
 private:

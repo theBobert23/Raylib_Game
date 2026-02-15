@@ -20,5 +20,7 @@ namespace PaddleGameConst {
 	inline constexpr int PADDLE_HEIGHT = 80;
 	//Time for a paddle to go from top to bottom 
 	inline constexpr float TIME = 2.0f;
+	inline constexpr int RADIUS = 10;
 }
+
 
