@@ -1,7 +1,9 @@
 #include "menu.hpp"
 #include "../constants.hpp"
 
+using namespace GeneralConst;
 using namespace MenuConst;
+
 
 Menu::~Menu() {
 	delete game;
@@ -20,58 +22,52 @@ void Menu::Init() {
 	//VSYNC for anti screen tearing, caps FPS to monitor Hz so no need for SetTargerFPS(); 
 	SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_VSYNC_HINT);
 
-	InitWindow(MenuConst::WINDOW_WIDTH, MenuConst::WINDOW_HEIGHT, TITLE);
-	
-	RenderTexture2D target = LoadRenderTexture(MenuConst::WINDOW_WIDTH, 
-		MenuConst::WINDOW_HEIGHT);
-	
+	InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, TITLE);
+
+	//excludes esc from closing he window
+	SetExitKey(KEY_NULL);
+}
+
+void Menu::Run() {
+
+	RenderTexture2D target = LoadRenderTexture(WINDOW_WIDTH, WINDOW_HEIGHT);
 
 	while (!WindowShouldClose()) {
 
-		//PUT EVERYTHING ON THE VIRTUAL CANVAS
 		BeginTextureMode(target);
-		
-		ClearBackground(RAYWHITE);
 
-		float dt = GetFrameTime();
+		ClearBackground(WHITE);
 
-		
+		//a max dt of 30fps
+		float dt = fminf(GetFrameTime(), 1 / 30.f);
 
 		if (game != nullptr) {
 			game->Update(dt);
 			game->Draw();
-		}
-		else {
+		}else {
 			Update(dt);
 			Draw();
 		}
-		
+
 		EndTextureMode();
 
-		//SCALE AND DRAW THE CANVAS ON THE WINDOW
+
 		BeginDrawing();
 
 		ClearBackground(BLUE);
 
-		float scale = fminf((float)GetScreenWidth() / (float)WINDOW_WIDTH,
-			(float)GetScreenHeight() / (float)WINDOW_HEIGHT);
+		int screenW = GetScreenWidth();
+		int screenH = GetScreenHeight();
 
-		int ScreenW = GetScreenWidth();
-		int ScreenH = GetScreenHeight();
+		float scale = fminf(screenW / (float)WINDOW_WIDTH, screenH / (float)WINDOW_HEIGHT);
 
 		DrawTexturePro(target.texture,
-			Rectangle{ 0.0f, 0.0f,
-			(float)target.texture.width,
-			(float)target.texture.height },
-
-			Rectangle{ (ScreenW - WINDOW_WIDTH * scale) * 0.5f,
-				-(ScreenH - WINDOW_HEIGHT * scale) * 0.5f,
-				WINDOW_WIDTH * scale,
-				WINDOW_HEIGHT * scale },
-
-			Vector2{ 0, 0 }, 0.0f, WHITE);
+			Rectangle{ 0.0f, 0.0f, WINDOW_WIDTH, -WINDOW_HEIGHT },
+			Rectangle{ (screenW - WINDOW_WIDTH * scale) / 2.0f, (screenH - WINDOW_HEIGHT * scale) / 2.0f, WINDOW_WIDTH * scale, WINDOW_HEIGHT * scale },
+			Vector2{ 0,0 }, 0.0f, WHITE);
 
 		EndDrawing();
+		
 	}
 
 	UnloadRenderTexture(target);

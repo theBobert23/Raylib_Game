@@ -1,14 +1,9 @@
 #pragma once
-
+#include "../../constants.hpp"
 #include "../../core/game.hpp"
 #include "paddle.hpp"
 #include "ball.hpp"
 #include "../../utils.hpp"
-
-
-namespace {
-	constexpr Vector2 BALL_START_POS = { 10, 10 };
-}
 
 
 class paddleGame : public Game {

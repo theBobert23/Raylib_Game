@@ -11,11 +11,14 @@
 class Menu {
 private:
 	Game* game;
+
+	void Update(float dt);
+	void Draw();
+	
 public:
 	~Menu();
 	Menu();
 
 	void Init();
-	void Update(float dt);
-	void Draw();
+	void Run();
 };

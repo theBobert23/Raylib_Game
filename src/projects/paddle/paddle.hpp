@@ -2,22 +2,12 @@
 
 #include "raylib.h"
 #include "../../utils.hpp"
-
-
-namespace {
-	constexpr int PADDING = 20;
-	constexpr int PADDLE_WIDTH = 10;
-	constexpr int PADDLE_HEIGHT = 80;
-	//Time for a paddle to go from top to bottom 
-	constexpr float TIME = 2.0f; 
-}
-
+#include "../../constants.hpp"
 
 
 class Paddle {
 private:
 	ObjectSide SIDE;
-	Size WINDOW;
 	Type TYPE;
 
 	Vector2 pos;
@@ -26,7 +16,7 @@ private:
 
 public:
 
-	Paddle(Size WINDOW, ObjectSide side, Type type);
+	Paddle(ObjectSide side, Type type);
 	~Paddle();
 
 	void Init();

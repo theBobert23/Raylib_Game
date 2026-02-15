@@ -1,16 +1,17 @@
 #include "paddle.hpp"
 
+using namespace PaddleGameConst;
+using namespace GeneralConst;
 
-Paddle::Paddle(Size window, ObjectSide side, Type type) {
+Paddle::Paddle(ObjectSide side, Type type) {
 	
-	WINDOW = window;
 	SIDE = side;
 	TYPE = type;
 
 	size.width = PADDLE_WIDTH;
 	size.height = PADDLE_HEIGHT;
 
-	speed = (WINDOW.height - size.height) / TIME;
+	speed = (WINDOW_HEIGHT - size.height) / TIME;
 
 
 	switch(side){
@@ -18,11 +19,11 @@ Paddle::Paddle(Size window, ObjectSide side, Type type) {
 			pos.x = PADDING;
 			break;
 		case ObjectSide::Right :
-			pos.x = WINDOW.width - size.width - PADDING;
+			pos.x = WINDOW_WIDTH - size.width - PADDING;
 			break;
 
 	}
-	pos.y = (WINDOW.height - size.height) / 2.0f;
+	pos.y = (WINDOW_HEIGHT - size.height) / 2.0f;
 
 }
 
@@ -76,15 +77,15 @@ void Paddle :: Update(float dt) {
 
 	if (pos.y < 0)
 		pos.y = 0;
-	if (pos.y + size.height > WINDOW.height)
-		pos.y = WINDOW.height - size.height;
+	if (pos.y + size.height > WINDOW_HEIGHT)
+		pos.y = WINDOW_HEIGHT - size.height;
 
 }
 
 void Paddle :: CheckInput() {
 
 }
-
+      
 Vector2 Paddle :: GetPos() {
 	return pos;
 }

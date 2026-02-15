@@ -1,5 +1,6 @@
 #include "ball.hpp"
-#include <iostream>
+
+using namespace PaddleGameConst;
 
 Ball::Ball(Vector2 position) {
 	int MIN = 250, MAX = 300;

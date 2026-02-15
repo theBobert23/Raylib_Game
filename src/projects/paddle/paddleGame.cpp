@@ -1,5 +1,7 @@
 #include "paddleGame.hpp"
 
+using namespace PaddleGameConst;
+using namespace GeneralConst;
 
 paddleGame :: ~paddleGame() {
 	delete Player;
@@ -9,8 +11,8 @@ paddleGame :: ~paddleGame() {
 
 paddleGame :: paddleGame() {
 
-	Player = new Paddle(GetWindowSize(), ObjectSide::Left, Type::Player);
-	Player2 = new Paddle(GetWindowSize(), ObjectSide::Right, Type::Player);
+	Player = new Paddle(ObjectSide::Left, Type::Player);
+	Player2 = new Paddle(ObjectSide::Right, Type::Player);
  
 	ball = new Ball( BALL_START_POS );
 
@@ -21,6 +23,7 @@ void paddleGame :: Init() {
 }
 
 void paddleGame :: Draw() {
+
 	Player->Draw();
 	Player2->Draw();
 	ball->Draw();
@@ -47,7 +50,7 @@ void paddleGame :: UpdateBall(float dt) {
 
 	if (ballPos.y - rad < 1)
 		ball->Invert_Y_Direction();
-	if (ballPos.y > 720 - rad)
+	if (ballPos.y > WINDOW_HEIGHT - rad)
 		ball->Invert_Y_Direction();
 
 	

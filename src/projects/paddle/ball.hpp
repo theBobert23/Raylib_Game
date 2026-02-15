@@ -1,10 +1,7 @@
 #pragma once
 
 #include "raylib.h"
-
-namespace {
-	constexpr int RADIUS = 10;
-}
+#include "../../constants.hpp"
 
 class Ball {
 private:
