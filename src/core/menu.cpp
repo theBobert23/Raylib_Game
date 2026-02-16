@@ -45,9 +45,12 @@ void Menu::Run() {
 			game->Update(dt);
 			game->Draw();
 		}else {
-			Update(dt);
-			Draw();
+			MenuUpdate(dt);
+			MenuDraw();
 		}
+
+		Draw();
+		Update(dt);
 
 		EndTextureMode();
 
@@ -76,9 +79,37 @@ void Menu::Run() {
 
 }
 
-void Menu::Update(float dt) {
+void Menu::MenuUpdate(float dt) {
 	if (IsKeyPressed(KEY_P))
 		game = new paddleGame();
+}
+
+void Menu::Update(float dt) {
+	if (IsKeyPressed(KEY_F11))
+		ToggleFullscreen();
+}
+
+void Menu::MenuDraw() {
+
+	int icons = WINDOW_WIDTH / ICON_SIZE;
+	if (!(icons % 2)) icons--;
+
+	int iconsWidth = icons * ICON_SIZE;
+
+	int PADDING = (WINDOW_WIDTH -  iconsWidth) / 2; 
+	
+	for (size_t i = 0; i < games.size(); i++) {
+
+		int col = 0;
+
+		int BUTTON_SIZE = (ICON_SIZE - GAP) / 2;
+
+		DrawRectangle( i * ICON_SIZE * 2 + PADDING, col * ICON_SIZE * 2 + PADDING, ICON_SIZE, ICON_SIZE, BLUE);
+
+		DrawRectangle(i * ICON_SIZE * 2 + PADDING, col * ICON_SIZE * 2 + PADDING + (ICON_SIZE + GAP), BUTTON_SIZE, BUTTON_SIZE, RED);
+		DrawRectangle(i * ICON_SIZE * 2 + PADDING + GAP + BUTTON_SIZE, col * ICON_SIZE * 2 + PADDING + (ICON_SIZE + GAP), BUTTON_SIZE, BUTTON_SIZE, RED);
+	}
+
 }
 
 void Menu::Draw() {

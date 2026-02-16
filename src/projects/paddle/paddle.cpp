@@ -69,6 +69,10 @@ void Paddle :: Update(float dt) {
 						pos.y -= speed * dt;
 					if (IsKeyDown(KEY_K))
 						pos.y += speed * dt;
+					break;
+				case Type::Computer :
+
+					break;
 					
 			}
 			break;

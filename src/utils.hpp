@@ -11,6 +11,17 @@ enum Type {
 	Computer
 };
 
+enum GameID {
+	Pong,
+	SpaceInvasion
+};
+
+enum GameType { SinglePlayer, MultiPlayer };
+
+struct GameInfo {
+	GameID id;
+	GameType type;
+};
 
 struct Size {
 	int width;

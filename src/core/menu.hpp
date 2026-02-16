@@ -3,6 +3,7 @@
 //FOR: unique_ptr;  time();  
 #include <memory>
 #include <ctime>
+#include <vector>
 
 #include "raylib.h"
 #include "game.hpp"
@@ -11,7 +12,13 @@
 class Menu {
 private:
 	Game* game;
+	std::vector <GameInfo> games = {
+		{GameID::Pong, GameType::MultiPlayer},
+		{GameID::SpaceInvasion, GameType::SinglePlayer}
+	};
 
+	void MenuUpdate(float dt);
+	void MenuDraw();
 	void Update(float dt);
 	void Draw();
 	
