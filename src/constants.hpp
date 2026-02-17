@@ -2,6 +2,8 @@
 
 #include "raylib.h"
 
+// ---- USE EVEN NUMBERS PLS ----
+
 namespace GeneralConst {
 	inline constexpr int WINDOW_WIDTH = 1280;
 	inline constexpr int WINDOW_HEIGHT = 720;
@@ -10,9 +12,9 @@ namespace GeneralConst {
 namespace MenuConst {
 	inline constexpr const char* TITLE = "MENU";
 	inline constexpr int ICON_SIZE = 150;
-	inline constexpr int GAP = 4;
-	inline constexpr int COL_GAP = ICON_SIZE * 2;
-	//inline constexpr int BUTTON_SIZE = 43; ICON_SIZE-GAP / 2
+	inline constexpr int BUTTON_GAP = 4;
+	inline constexpr int COL_GAP = ICON_SIZE;
+	inline constexpr int ROW_GAP = ICON_SIZE;
 }
 
 namespace PaddleGameConst {

@@ -12,9 +12,13 @@ Menu::~Menu() {
 
 Menu::Menu() {
 	game = nullptr;
+	gameIcons.reserve(games.size());
+	buttons.reserve(games.size() * 2);
 }
 
 void Menu::Init() {
+
+	InitGames();
 
 	//FOR GetRandomValue();
 	SetRandomSeed((unsigned int) time(nullptr));
@@ -26,6 +30,43 @@ void Menu::Init() {
 
 	//excludes esc from closing he window
 	SetExitKey(KEY_NULL);
+}
+
+void Menu::InitGames() {
+
+	//---- Spacing logic ----
+	int icons = WINDOW_WIDTH / ICON_SIZE;
+	if (!(icons % 2)) icons--;
+
+	int iconsWidth = icons * ICON_SIZE;
+
+	int PADDING = (WINDOW_WIDTH - iconsWidth) / 2;
+	// -- / --
+
+	int BUTTON_SIZE = (ICON_SIZE - BUTTON_GAP) / 2;
+
+	for (size_t i = 0; i < games.size(); i++) {
+
+		int row = 0;
+
+		gameIcons.push_back({});
+
+		if (games[i].type == GameType::MultiPlayer) {
+			
+			buttons.push_back(std::make_unique<Button>(
+			Rectangle { (float)(PADDING + i * (ICON_SIZE + COL_GAP)), (float)(PADDING + row * (ICON_SIZE + ROW_GAP) + ICON_SIZE + BUTTON_GAP), (float) BUTTON_SIZE, (float) BUTTON_SIZE },
+				games[i].id, GameType::SinglePlayer));
+
+			buttons.push_back(std::make_unique<Button>(
+				Rectangle{ (float)(PADDING + i * (ICON_SIZE + COL_GAP) + BUTTON_SIZE + BUTTON_GAP), (float)(PADDING + row * (ICON_SIZE + ROW_GAP) + ICON_SIZE + BUTTON_GAP), (float)BUTTON_SIZE, (float)BUTTON_SIZE },
+				games[i].id, GameType::MultiPlayer));
+		}
+		else
+			buttons.push_back( std::make_unique<Button> (
+				Rectangle {(float) (PADDING + i * (ICON_SIZE + COL_GAP)), (float) (PADDING + row * (ICON_SIZE + ROW_GAP) + ICON_SIZE + BUTTON_GAP ), (float) ICON_SIZE, (float) BUTTON_SIZE },
+				games[i].id, GameType::SinglePlayer));
+	}
+
 }
 
 void Menu::Run() {
@@ -45,6 +86,7 @@ void Menu::Run() {
 			game->Update(dt);
 			game->Draw();
 		}else {
+			CheckInput();
 			MenuUpdate(dt);
 			MenuDraw();
 		}
@@ -84,11 +126,6 @@ void Menu::MenuUpdate(float dt) {
 		game = new paddleGame();
 }
 
-void Menu::Update(float dt) {
-	if (IsKeyPressed(KEY_F11))
-		ToggleFullscreen();
-}
-
 void Menu::MenuDraw() {
 
 	int icons = WINDOW_WIDTH / ICON_SIZE;
@@ -97,20 +134,42 @@ void Menu::MenuDraw() {
 	int iconsWidth = icons * ICON_SIZE;
 
 	int PADDING = (WINDOW_WIDTH -  iconsWidth) / 2; 
+
+	DrawButtons();
 	
 	for (size_t i = 0; i < games.size(); i++) {
 
 		int col = 0;
 
-		int BUTTON_SIZE = (ICON_SIZE - GAP) / 2;
+		int BUTTON_SIZE = (ICON_SIZE - BUTTON_GAP) / 2;
 
 		DrawRectangle( i * ICON_SIZE * 2 + PADDING, col * ICON_SIZE * 2 + PADDING, ICON_SIZE, ICON_SIZE, BLUE);
 
-		DrawRectangle(i * ICON_SIZE * 2 + PADDING, col * ICON_SIZE * 2 + PADDING + (ICON_SIZE + GAP), BUTTON_SIZE, BUTTON_SIZE, RED);
-		DrawRectangle(i * ICON_SIZE * 2 + PADDING + GAP + BUTTON_SIZE, col * ICON_SIZE * 2 + PADDING + (ICON_SIZE + GAP), BUTTON_SIZE, BUTTON_SIZE, RED);
+		if (games[i].type == GameType::MultiPlayer) {
+			//DrawRectangle(i * ICON_SIZE * 2 + PADDING, col * ICON_SIZE * 2 + PADDING + (ICON_SIZE + GAP), BUTTON_SIZE, BUTTON_SIZE, RED);
+			//DrawRectangle(i * ICON_SIZE * 2 + PADDING + BUTTON_GAP + BUTTON_SIZE, col * ICON_SIZE * 2 + PADDING + (ICON_SIZE + GAP), BUTTON_SIZE, BUTTON_SIZE, RED);
+		}
+		else
+			;
+			//DrawRectangle(i * ICON_SIZE * 2 + PADDING, col * ICON_SIZE * 2 + PADDING + (ICON_SIZE + GAP), BUTTON_SIZE * 2 + GAP, BUTTON_SIZE, RED);
 	}
 
 }
+
+void Menu::DrawButtons() {
+	for (const auto& button : buttons)
+		button->Draw();
+}
+
+void Menu::CheckInput() {
+	
+}
+
+void Menu::Update(float dt) {
+	if (IsKeyPressed(KEY_F11))
+		ToggleFullscreen();
+}
+
 
 void Menu::Draw() {
 
