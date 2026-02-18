@@ -14,7 +14,7 @@ public:
 	
 	Button(Rectangle rect, GameID id, GameType type);
 	~Button();
-	bool isClicked(int x, int y) const;
+	bool isClicked(int x, int y);
 	GameInfo GetGame();
 	void Draw();
 };

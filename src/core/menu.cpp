@@ -56,7 +56,7 @@ void Menu::InitGames() {
 			buttons.push_back(std::make_unique<Button>(
 			Rectangle { (float)(PADDING + i * (ICON_SIZE + COL_GAP)), (float)(PADDING + row * (ICON_SIZE + ROW_GAP) + ICON_SIZE + BUTTON_GAP), (float) BUTTON_SIZE, (float) BUTTON_SIZE },
 				games[i].id, GameType::SinglePlayer));
-
+		
 			buttons.push_back(std::make_unique<Button>(
 				Rectangle{ (float)(PADDING + i * (ICON_SIZE + COL_GAP) + BUTTON_SIZE + BUTTON_GAP), (float)(PADDING + row * (ICON_SIZE + ROW_GAP) + ICON_SIZE + BUTTON_GAP), (float)BUTTON_SIZE, (float)BUTTON_SIZE },
 				games[i].id, GameType::MultiPlayer));
@@ -66,6 +66,8 @@ void Menu::InitGames() {
 				Rectangle {(float) (PADDING + i * (ICON_SIZE + COL_GAP)), (float) (PADDING + row * (ICON_SIZE + ROW_GAP) + ICON_SIZE + BUTTON_GAP ), (float) ICON_SIZE, (float) BUTTON_SIZE },
 				games[i].id, GameType::SinglePlayer));
 	}
+
+	std::cout<<buttons[0]->isClicked(1000, 10);
 
 }
 
@@ -86,7 +88,6 @@ void Menu::Run() {
 			game->Update(dt);
 			game->Draw();
 		}else {
-			CheckInput();
 			MenuUpdate(dt);
 			MenuDraw();
 		}
@@ -122,8 +123,7 @@ void Menu::Run() {
 }
 
 void Menu::MenuUpdate(float dt) {
-	if (IsKeyPressed(KEY_P))
-		game = new paddleGame();
+	CheckInput();
 }
 
 void Menu::MenuDraw() {
@@ -163,11 +163,39 @@ void Menu::DrawButtons() {
 
 void Menu::CheckInput() {
 	
+	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+		int x = GetMouseX();
+		int y = GetMouseY();
+
+		for (auto& button : buttons)
+			if (button->isClicked(x, y))
+				LoadGame(button->GetGame());
+	}
+
+}
+
+void Menu::LoadGame(GameInfo info) {
+	
+	switch (info.id) {
+		case GameID::Pong :
+			game = info.type == GameType::SinglePlayer ? new paddleGame(GameType::SinglePlayer) : new paddleGame(GameType::MultiPlayer);
+
+	}
+
 }
 
 void Menu::Update(float dt) {
+
+	// --- INPUT CHECKS ---
 	if (IsKeyPressed(KEY_F11))
 		ToggleFullscreen();
+	
+	// --- ---
+
+	if ( game != nullptr) 
+		if ( game->ShouldClose())
+			game = nullptr;
+
 }
 
 

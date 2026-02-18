@@ -28,6 +28,7 @@ private:
 	void Update(float dt);
 	void Draw();
 	void CheckInput();
+	void LoadGame(GameInfo info);
 	
 public:
 	~Menu();

@@ -9,12 +9,16 @@ paddleGame :: ~paddleGame() {
 	delete ball;
 }
 
-paddleGame :: paddleGame() {
+paddleGame :: paddleGame(GameType type){
+
+	TYPE = type;
 
 	Player = new Paddle(ObjectSide::Left, Type::Player);
-	Player2 = new Paddle(ObjectSide::Right, Type::Player);
+	Player2 = type == GameType::SinglePlayer ? new Paddle(ObjectSide::Right, Type::Computer) : new Paddle(ObjectSide::Right, Type::Player);
  
 	ball = new Ball( BALL_START_POS );
+
+	PAUSED = false;
 
 }
 
@@ -30,6 +34,8 @@ void paddleGame :: Draw() {
 }
 
 void paddleGame :: Update(float dt) {
+
+	CheckInput();
 
 	UpdateBall(dt);
 
@@ -78,9 +84,14 @@ void paddleGame :: ResetBall(){
 }
 
 void paddleGame :: CheckInput() {
-
+	if (IsKeyPressed(KEY_ESCAPE))
+		PAUSED = true;
 }
 
 bool paddleGame :: ShouldClose() {
+
+	if (PAUSED && IsKeyPressed(KEY_E))
+		return true;
+
 	return false;
 }

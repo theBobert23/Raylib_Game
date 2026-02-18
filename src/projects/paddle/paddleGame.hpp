@@ -8,15 +8,18 @@
 
 class paddleGame : public Game {
 private:
+	GameType TYPE;
 	Paddle* Player;
 	Paddle* Player2;
 	Ball* ball;
+
+	bool PAUSED;
 	
 	
 public:
 	~paddleGame() override;
 
-	paddleGame();
+	paddleGame(GameType type);
 	void Init() override;
 	void Draw() override;
 	void Update(float dt) override;
