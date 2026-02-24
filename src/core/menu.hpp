@@ -9,14 +9,15 @@
 #include "game.hpp"
 #include "button.hpp"
 #include "projects/paddle/paddleGame.hpp"
+#include "projects/kitchen/kitchenGame.hpp"
 
 
 class Menu {
 private:
-	Game* game;
+	std::unique_ptr<Game> game;
 	std::vector <GameInfo> games = {
 		{GameID::Pong, GameType::MultiPlayer},
-		{GameID::SpaceInvasion, GameType::SinglePlayer}
+		{GameID::Kitchen, GameType::SinglePlayer}
 	};
 	std::vector<GameIcon> gameIcons;
 	std::vector<std::unique_ptr<Button>> buttons;

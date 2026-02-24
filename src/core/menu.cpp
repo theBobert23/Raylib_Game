@@ -6,7 +6,6 @@ using namespace MenuConst;
 
 
 Menu::~Menu() {
-	delete game;
 
 }
 
@@ -143,7 +142,7 @@ void Menu::MenuDraw() {
 
 		int BUTTON_SIZE = (ICON_SIZE - BUTTON_GAP) / 2;
 
-		DrawRectangle( i * ICON_SIZE * 2 + PADDING, col * ICON_SIZE * 2 + PADDING, ICON_SIZE, ICON_SIZE, BLUE);
+		DrawRectangle((int) i * ICON_SIZE * 2 + PADDING, col * ICON_SIZE * 2 + PADDING, ICON_SIZE, ICON_SIZE, BLUE);
 
 		if (games[i].type == GameType::MultiPlayer) {
 			//DrawRectangle(i * ICON_SIZE * 2 + PADDING, col * ICON_SIZE * 2 + PADDING + (ICON_SIZE + GAP), BUTTON_SIZE, BUTTON_SIZE, RED);
@@ -178,7 +177,11 @@ void Menu::LoadGame(GameInfo info) {
 	
 	switch (info.id) {
 		case GameID::Pong :
-			game = info.type == GameType::SinglePlayer ? new paddleGame(GameType::SinglePlayer) : new paddleGame(GameType::MultiPlayer);
+			game = info.type == GameType::SinglePlayer ? std::make_unique<paddleGame>(GameType::SinglePlayer) : std::make_unique<paddleGame>(GameType::MultiPlayer);
+			break;
+		case GameID::Kitchen :
+			game = std::make_unique<KitchenGame>();
+			break;
 
 	}
 

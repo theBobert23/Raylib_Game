@@ -9,9 +9,9 @@ private:
 protected:
 
 public:
-	virtual ~Game() = 0;
+	virtual ~Game() = default;
+	Game() = default;
 
-	Game();
 	virtual void Init() = 0;
 	virtual void Draw() = 0;
 	virtual void Update(float dt) = 0;

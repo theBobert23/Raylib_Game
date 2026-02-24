@@ -16,6 +16,7 @@ enum Type {
 
 enum GameID {
 	Pong,
+	Kitchen,
 	SpaceInvasion
 };
 
