@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="kitchen">
+      <UniqueIdentifier>{eeb9399c-4116-4804-9bc8-419fb9b7a572}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="kitchen\headers">
+      <UniqueIdentifier>{6f415500-4144-4bc1-a37b-92fef0bd90c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="main">
+      <UniqueIdentifier>{9c0480ff-2e40-469d-9f7d-e4135176c639}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="main\headers">
+      <UniqueIdentifier>{6b85513e-08dd-41ee-bb54-ae7ae927ac52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="paddle">
+      <UniqueIdentifier>{890291de-d8bd-4957-8c35-1a73045781f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="paddle\headers">
+      <UniqueIdentifier>{861f40a3-1d50-4ab1-ba94-bb98eac55890}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="menu">
+      <UniqueIdentifier>{744282cb-29ce-47a3-8a85-03f66d5cff8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="menu\headers">
+      <UniqueIdentifier>{a62b2c46-d9f4-40c8-8c89-ddb71ea74fb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shared">
+      <UniqueIdentifier>{10b8c82d-303a-496f-b7c6-646918bac387}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="base">
+      <UniqueIdentifier>{928d0aed-220f-4cde-aacc-944626646ba4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="base\headers">
+      <UniqueIdentifier>{76029e80-cc84-435f-9335-c018c22c287c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{564c9c69-b141-4c11-887d-226399c5aacc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\main.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\games\kitchen\kitchenGame.cpp">
+      <Filter>kitchen</Filter>
+    </ClCompile>
+    <ClCompile Include="kitchenPlayer.cpp">
+      <Filter>kitchen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\games\paddle\ball.cpp">
+      <Filter>paddle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\games\paddle\paddle.cpp">
+      <Filter>paddle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\games\paddle\paddleGame.cpp">
+      <Filter>paddle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\games\menu\menu.cpp">
+      <Filter>menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\games\menu\menuButton.cpp">
+      <Filter>menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\core\ui\button.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\games\kitchen\player.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\base\game.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\games\kitchen\kitchenGame.hpp">
+      <Filter>kitchen\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="kitchenPlayer.hpp">
+      <Filter>kitchen\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\games\paddle\paddle.hpp">
+      <Filter>paddle\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\games\paddle\paddleGame.hpp">
+      <Filter>paddle\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\games\paddle\ball.hpp">
+      <Filter>paddle\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\games\menu\menu.hpp">
+      <Filter>menu\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\games\menu\menuButton.hpp">
+      <Filter>menu\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\games\shared\utils.hpp">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\games\shared\constants.hpp">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\games\kitchen\player.hpp">
+      <Filter>base\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\core\ui\button.hpp">
+      <Filter>base\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\base\game.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
