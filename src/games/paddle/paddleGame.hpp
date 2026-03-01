@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../engine/base/game.hpp"
+#include "../../engine/core/game.hpp"
 
 #include "../shared/constants.hpp"
 #include "../shared/utils.hpp"

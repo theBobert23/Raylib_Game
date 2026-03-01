@@ -1,14 +1,14 @@
 #pragma once 
 
-#include "../../engine/base/game.hpp"
+#include "../../engine/core/game.hpp"
 #include "../shared/constants.hpp"
-#include "player.hpp"
+#include "kitchenPlayer.hpp"
 
 #include <memory>
 
 class KitchenGame : public Game {
 private:
-	std::unique_ptr<Player> player;
+	std::unique_ptr<KitchenPlayer> player;
 	Camera3D camera;
 	bool PAUSED;
 public:

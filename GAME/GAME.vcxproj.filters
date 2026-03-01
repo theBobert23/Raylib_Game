@@ -72,6 +72,9 @@
     <ClCompile Include="..\src\engine\base\game.cpp">
       <Filter>core</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\engine\core\object\player3D.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\games\kitchen\kitchenGame.hpp">
@@ -109,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="..\src\engine\base\game.hpp">
       <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\core\object\player3D.hpp">
+      <Filter>base\headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

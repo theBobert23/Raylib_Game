@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "raylib.h"
-#include "../../engine/base/game.hpp"
+#include "../../engine/core/game.hpp"
 #include "menuButton.hpp"
 #include "../shared/constants.hpp"
 #include "../paddle/paddleGame.hpp"

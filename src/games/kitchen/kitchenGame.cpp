@@ -8,7 +8,7 @@ KitchenGame::~KitchenGame() {
 }
 
 KitchenGame::KitchenGame() {
-	player = std::make_unique<Player>();
+	player = std::make_unique<KitchenPlayer>();
 	PAUSED = false;
 
 	Init();
@@ -36,8 +36,11 @@ void KitchenGame::Draw() {
 
 		DrawPlane({ 0.0f, 0.0f, 0.0f }, { 30, 10 }, BLUE);
 
+		player->Draw();
+
 		EndMode3D();
 
+		//show on top of 3D game
 		DrawCircle(100, 100, 20, RED);
 
 	}
@@ -51,9 +54,10 @@ void KitchenGame::DrawPauseMenu() {
 void KitchenGame::Update(float dt){
 
 	if (!PAUSED) {
-		CheckInput();
-		UpdateCamera(&camera, CAMERA_FIRST_PERSON);
 		player->Update(dt);
+		CheckInput();
+
+		UpdateCamera(&camera, CAMERA_FIRST_PERSON);
 
 	}
 	else {
